@@ -1,0 +1,12 @@
+def dynamicArray(n, queries):
+    lastAnswer = 0
+    twoDimArray = [list() for x in range(n)]
+    return_value = []
+    for query_type,x,y in map(list,queries):
+        idx = (x^lastAnswer)%n
+        if query_type == 1:
+            twoDimArray[idx].append(y)
+        else:
+            lastAnswer = twoDimArray[idx][y%len(twoDimArray[idx])]
+            return_value.append(lastAnswer)
+    return return_value
